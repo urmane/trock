@@ -1,0 +1,14 @@
+
+Date:status:bug/resolution
+20181117:initial copy from ITS
+
+General conditions:
+WORKAROUND:
+Emotes do not display
+	npcs must have lite=1 at a minimum or be in a light pool
+	engine.Map:displayEmotes checks seens(x,y), need to subclass Map and override?
+	that's to have unseen NPCs emote, which seems reasonable ...
+	will change later to can_hear() or heards(x,y)
+
+FIXED:
+player.sight and sight_min are not set right?  birth dtor error?

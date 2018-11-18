@@ -1,0 +1,354 @@
+This is the todo list, currently divided into:
+- sprints (roughly related items for minor version rev)
+- semi-organized lists of item details
+
+Sprints:
+- reorg rando worldmap into one city (rando worldmap and other unused zones to TROCK)
+	- static worldmap becomes a city - or no worldmap at all?
+		- What use is a city "worldmap"?  travel w/out going thru lvls
+		- will there be multiple visits, or one-time-only?  Or market-central plus one-time onlies?
+	- zones become city sections - inventory and nodegraph them
+		- weird, fantasy violence, real violence, spooky/ghostly, mindfuck, actual phobias,
+		- avoid stereotypes, fear of the unknown
+		- random or psuedorandom layouts
+		- on-the-fly random minizones - houses per area to loot; oneshot?
+	- Gora Prison:
+		- 1 Holding Cells - static (conx castle)
+		- 2 Dungeon - vaults
+		- 3 Torture Chamber - psuedo-random (conx sewers)
+		- 4 Oubliette
+	- sewers:
+		- 1 Sewers (conx graveyard)
+		- 2 Cisterns - sublevels
+		- 3 Rat Caves - random
+		- 4 Abandoned Maintenance Accessways - maze
+	- graveyard:
+		- 1 Potter's Field - conx Market
+		- 2 Common Graves - conx Church
+		- 3 Honored Tombs - regular vaults
+		- 4 Ancient Mausoleums - psuedo random irregular vaults
+	- market:
+		- 1 Market Square - regular - conx poor, docks
+		- 2 Bazaar - semi-irregular - conx sewers
+		- 3 Grey Market - maze with random placement of static shop inventory
+		- 4 Artisan's Shops - random placement static shop inventory - conx rich
+	- poor:
+		- 1 Drinker's Row
+		- 2 Workman's Lodgings - conx Church
+		- 3 Hovels - conx Asylum
+		- 4 Mud Maze
+	- Merchant Districts:
+		- 1 Commodities
+		- 2 Industrial Products
+		- 3 Art Gallery
+		- 4 Financial District
+	- Docks:
+		- 1 Fisherman's Wharf
+		- 2 Merchant's Port
+		- 3 Yacht Club
+		- 4 Warehouse District
+		- 5 Naval Yard
+		- 6 Lagoon
+	- rich:
+		- 1 The Plantation
+		- 2 The Manors
+		- 3 The Estates
+		- 4 The Heights - conx castle
+	- church:
+		- 1 Nave
+		- 2 Sanctuary
+		- 3 Sanctum Sanctorum
+		- 4 Catacombs - conx forest
+	- asylum: 4-(PCF)
+		- 1 Offices
+		- 2 Patient Rooms
+		- 3 Cafeteria
+		- 4 Surgery - conx pcf
+		- 5 Basement
+	- Personnel Collection Facility
+	- forest:
+		- 1 Woods
+		- 2 Clearing
+		- 3 Cave
+		- 4
+	- castle:
+		- 1
+		- 2
+		- 3
+		- 4
+- Display zone name in UI
+- skeleton all the talent trees
+- add keys and keyed doors (could be faked with Quest items?)
+- NPC facing indicator
+- Player visibility indicator
+- NPC suspicion indicator (green-yellow-red, high alpha?)
+	- print AI stat/e: "Aware", "suspicious", "patrolling",.... ?
+- Mod AI - assure they change state normal/suspcious/active, then back down if not directly viewing - careful considering the back to normal shift
+- Mod Awareness / AI tied to suspicion flag
+- Sound - on Player:move, same precomp'd dist array as vis, if n > e.hearing then e.ai_suspicion++
+- Smell - leaves a trail that decays (but never goes to zero) - ai can search surrounding grids for vals
+
+
+Completed sprints:
+- move to 1.5.10 source tree and test
+
+---
+old, reorg
+---
+Reorder these:
+- research and note methods to add dread and horror
+	- concern->nervousness (something *might* happen, but no real danger)->fear (you're sure *some*thing bad is going to happen)
+	- dread - afraid of an event,thing, place you've seen before
+	- terror - something bad *is* happening, but you cannot identify the cause / do not understand it
+	- horror - fear elicited by something frightening you have seen
+	- alarm - sudden appearance of something frightening
+	- panic - extreme fear causing one to become unreasonable
+- Story ==> hero's journey steps?  Not sure that's what we want for this game ... maybe
+
+Semi-Organized todo:
+High level
+finalize the overall storyline, and sketch out the major bits needed, do the end (simplified end-to-end) then insert (then redo this todo)
+	prison->sewer->graveyard->town->worldmap
+	town is a dramatic break, very big, opportunity to practice, equip up, swipe stuff
+		game adjusts to how much illegal done (wanted, reputation)
+	reputation and faction reactions change the game
+	npc chats -> quests and/or reputation / reaction changes, re-emprison (lose equip), etc
+	large-scale famous acts (ie steal X's thing)
+	overall has to be save the world
+
+Move to TROCK:
+worldmap, underworld, undersea - all "worldmaps", each with zones (that might connect to >1 worldmap)
+make a config settings?
+done-place init into random geography
+done - place cities (some named and roughly placed, some completely random)
+done - place mts (noblock, or add'l cost for mt moving) - single noise fn with elevation more consistent
+done - place ice at pole
+done - remainder is plains
+done - place forests
+augment initial static map with additional locations - story phase one
+At some point, the alarm sounds and more guards appear, searching the town
+done - place volano exit place (then change terrains back to blocking)
+done - add player stats (use LA?) and update display
+done - add talent/trees
+done - give player starting talents by class
+give player starting equip by class
+add lots of weapons/armor, make sure they're leveled somehow
+add lots of monsters, look for a way to organize(genus/species/etc)/and conf-file/table them for easy input
+done - add gems
+done - find a way to add variable coins
+done(sorta) - add randomly priced-ID'd jewelry/art ...
+done(fences only)add stores to sell treasures
+build out random towns, story phase two
+create and place any additional static maps (eg islands) - story phase three
+create mirror image world - story opt phase
+
+Main Storyline:
+init
+	done - escape from prison: prison->sewer->graveyard->worldmap
+	init set of cities/dungeons on starting island
+Nature selects you as secret anti-champion for this world
+Murmon, Earth element zone
+	Collect Gravity Lens plot item
+	Gain Speed tree, vs-Earth anti-element
+Tomb
+	Allows immediate access to volcano
+	Completing Tomb not strictly necessary here, very dangerous
+	Access to Gora Graveyard 2 Specials (vsUndead)
+Volcano, Fire element zone
+	Collect Molten Heart plot iem
+	Gain Shadow tree, vs-fire anti-element
+	Gain access to rest of world
+	Underworld visit part, but locked
+Insert world-oriented quests here	
+Castle Kurtok "rooftop", Air element zone
+	Collect Cloud 
+	Gain Control tree, vs-Air anti-element
+Gora sewers, Water element zone
+	Collect / Drink Primordial Soup
+	Gain Death tree, vs-Water anti-element
+	Gain world mirror image, free travel
+		Ability to visit Underworld not stated, but complete first quest by (re)visiting Father's Son
+		(Specials vsFear)
+insert additionals here
+Defeat the minions:
+	undead Lt, Gora Graveyard 3 - several tombs, several std kill ways (destroy the body, sunlight, et al.)
+		Collect his x
+	fear Lt, map corner island town, monsters of various powers, all uniques
+		Collect her x
+	greed Lt, lots of (only) money, bribing, wierd, hyperbolic valuables and equipment available
+		Collect its x
+	force Lt, Underwater City, warriors with strong armor/weapons, std military-oriented
+		Collect his x
+Become the God of Thieves
+Defeat the big bad
+	big bad escapes into Castle Kurtok; chase him through rando zones, maybe across the world
+Optionals:
+	Famous locations/bosses to do tasks at; steal an X, do the thing ...
+
+Sounds to record:
+done - understand playSoundNear - appears to be for playing sounds at !player-location
+guards: random "Hum", "Hah", sigh, whistle
+guards: on_aware "Hey!", "You!", "Stop!", "Freeze!"
+zombie: random "rrr"  "Rrrrr", etc
+zombie: on_aware "RRR!"
+torch,brazier: random, sparks?
+
+done - initial NPC tree:
+living
+	animal (egos: zombie, ghostly)
+		humanoid (egos: vampiric)
+			kobold
+			human
+				guard?
+			giant
+				fire, hill, cloud, sea, storm, etc
+			ogre
+		lizard
+			snake
+				Snakeman
+			dragon
+		insect
+		amphibian
+			giant frog
+			giant toad
+		rodent
+			giant rat
+		canine
+			wolf
+		ursine
+			bear
+		feline
+			tiger
+	plant
+		insensate
+		sentient
+	fungus
+	jelly
+supernatural
+	divine
+	extraplanar
+undead (specific instances, plus can be an ego for animals)
+automaton
+
+NPC egos:
+(NB: may have to force declare *all* egos, to avoid zombie guards next to non-zombie guards.  Or subclass per zone.)
+
+Features:
+done - directional cone lights / LOS, to allow sneak up behind
+done - speed changes by ai state
+lockpick gui
+endlessly hunted by "guards"
+
+Additional Quests, asside from main storyline:
+done - starting quest - get out of the prison
+done: side quest - take-my-macguffin in the sewers - macguffins cannot disappear -> elemental quest
+done: assign elemental quests
+side quest - take-up-my sword in the prison, get the key from the secret room
+side quests - collect gold/valuables/treasures, some big ones
+side quest - assassinate
+
+Talents
+Talent Tree view / interface
+Default Trees
+Awareness:Vision:activated
+Awareness:Listen:activated
+Awareness:Environment:activated (thruwalls)
+Awareness:See Around Corners:activated (better cornerFOV)
+Mechanic:Pick Locks:activated
+Mechanic:Disarm Trap:activated
+Mechanic:Disable Mechanism:activated
+Mechanic:Set Trap:activated
+Stealth:Hide:activated - done
+Stealth:Move Silent:sustained
+Stealth:Leap To Shadows:activated
+Thief:Pick Pockets:activated
+Thief:Sap:activated
+Thief:Backstab:activated
+Politics:Flattery:activated
+Politics:Bribe:activated
+Politics:Disguise:sustained
+
+Anti-Elemental Trees
+Speed:Avoid Trap:sustained
+Speed:Shadowjump:activated
+Shadow:Hide In Plain Sight:sustained
+Shadow:Create Shadow:activated
+Control:Phantom Noise:activated
+Control:Illusory Movement:activated
+Control:Summon Shadows:activated
+Control:Anti-Door:sustained?
+Death:Nerve Strike:activated
+Death:Assassinate:activated
+
+Consider these:
+Climb walls?
+Dodge
+lift/push/pull body - needs "body"
+ranged / subdual ?  Easy-ish, but not sure it fits the theme
+	Maybe special case, like "put out light with arrow", "temp blind target"
+
+
+Stats:
+STR - carry loot, attacking
+SPD - run - no, use DEX
+TouCH - lockpick, pickpock - no use DEX
+DEX - general touch, sep from Reaction
+StealTH - sneak, hide - talent, not stat
+AIM? or just DEX - aim, ranged, knockout - no use DEX
+
+add lockpick gui (remember Policy)
+	picking locks quickly and efficiently - player can also "take all the time he needs" and autopick
+	lock - attributes, states
+		attr:
+			mfctr and series
+			difficulty (1-100)
+			level: X named:(ward/lever/wafer/pin/rotary/tubular/disc/magnet/etc)
+			mechanisms: 1-5(?)
+			features: spring, reset, trap, ...
+		mfctr->certain attrs, series->difficulty, certain attrs
+	tools - what toolset the player has equipped
+		levels are named pick, skeleton key, thieve's tools, locksmith's tools, etc
+		if tool lvl < lock lvl, ++diff
+	actions - what can be done
+	displays mfctr - if known (successful pick -> known), display other bits
+	mfctr -> rnd name, always same type: warded, (1,2,3,4,5)(wafer,pin,lever,disc)tumbler, other "tech"
+	displays tools: pick, key, other?
+	solve each in order - each move takes a turn (during which you cannot see the screen)
+	would be nice to have gfx, or at least color-coded status
+	this might work:
+    if self.bg_image then
+        local fill = core.display.loadImage(self.bg_image)
+        local fw, fh = fill:getSize()
+        self.bg_surface = core.display.newSurface(w, h)
+        self.bg_surface:erase(0, 0, 0)
+        for i = 0, w, fw do for j = 0, h, fh do
+            self.bg_surface:merge(fill, i, j)
+        end end
+        self.bg_texture, self.bg_texture_w, self.bg_texture_h = self.bg_surface:glTexture()
+    end
+
+done: the graveyard levels
+done - start player with the crappiest lockpick
+done - add prisoners (dumb first)
+done - add random prisoner chats
+done - add / give guards directional lights
+done - Add in light levels, lights fade with distance to limit, gfx or gfx effects for various levels
+done - Make gold integers, not .02d
+halfdone - Make gems and valuables, name with "(100gp)" or "(~100gp)"
+done-ish - Need a fence to sell stolen
+done: put in several more dungeon levels
+done: add in lockpicks / thieves tools as objects
+done: test/add ability to equip them
+done: add locked doors
+done: add ability for lockpick to work
+done: put locked doors in dungeon
+done: add flyingtext Unlock on unlock
+done - add in static lights for torches/brazziers - make them Actors (so they can be shot/"killed")
+done, but should redo tied to quests: add in text popups to sewer and graveyard
+done put a town near the graveyard (need a dramatic break)
+done: make lockpick talent (passive, requires tool use)
+done: make lockpick talent a starting talent
+done: make lockpicks add to existing talent
+done (doors): make doors have a lockpick value (mechanisms/levers, too)
+done: worldmap, static stub
+done: worldmap, static piece in stub random world generator 

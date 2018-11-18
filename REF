@@ -1,0 +1,54 @@
+Policy: the rogue is someone who does things not supposed to be done
+
+Reference:
+defineTile = function(char, grid, obj, actor, trap, status, spot)
+
+http://te4.org/wiki/T4_Modules_Howto_Guide
+
+
+For having the tactical AI check custom resources, you can make SPECIAL a function
+Code:
+tactical = { SPECIAL = function(self, t, target) --tactical consideration for focus recovery
+   local wantfocus = 0
+      local stoic_focus = 100 * self:getStoic_focus() / self:getMaxStoic_focus()
+      if stoic_focus < 6.25 then wantfocus = wantfocus + 6
+         elseif stoic_focus < 12.5 then wantfocus = wantfocus + 1
+         elseif stoic_focus < 25 then wantfocus = wantfocus + 0.5
+      end
+   return wantfocus
+end   },
+
+
+Hmm, the wiki's guide on resolvers is surprisingly sparse. Here's a rough overview:
+
+newEntity{} defines basically a template of an entity. In Zone:makeEntity(), that template gets cloned and fleshed out into a full-fledged entity via Entity:resolve(). So say your entity definition has a field that you want to vary between entitles:
+Code:
+newEntity {
+  name = 'Silly example',
+  silliness = rng.range(1, 10),
+}
+
+That won't work, because the field will be set in stone when the template is loaded and every copy will get the same value. Instead you use:
+Code:
+newEntity {
+  name = 'Silly example',
+  silliness = resolvers.rngrange(1, 10),
+}
+
+which, as your code listing above shows, expands to:
+Code:
+newEntity {
+  name = 'Silly example',
+  silliness = { __resolver="rngrange",  __resolve_instant=true, 1, 10 },
+}
+
+Then when an entity of this type is being created, Entity:resolve() walks the cloned template looking for anything shaped like a {__resolver} table and calls its associated resolvers.calc[__resolver]() method — in our case, resolvers.calc.rngrange(). The calc method gets called with two parameters: 't' is the {__resolver} table itself, which contains all the parameters passed to the original resolvers.whatever() call, and 'e' is the entity that's in the process of being resolved [in our example, resolvers.calc.rngrange() ignores its 'e' parameter because it doesn't need it]. The value returned from the calc method is assigned back to the field it comes from; if it's just a bare 'resolvers.something()' without a 'fieldname =' in front of it, you'll probably want to have the calc method return nil to delete the field.
+
+Now the {__resolver} table returned by resolvers.whatever() can have a couple extra fields of interest:
+
+    __resolve_last: Entity:resolve() actually does two sweeps looking for {__resolver} tables, one at the very end. If your {__resolver} table includes __resolve_last=true, it will be processed in that second sweep; otherwise, it gets processed with everything else in the first sweep.
+    __resolve_instant: If your resolvers.calc.whatever() method returns something like another entity template that contains resolvers of its own, __resolve_instant=true tells Entity:resolve() to walk that return value immediately looking for more {__resolver} tables to resolve. I'm not sure why resolvers.rngrange() uses it, since it's just returning a number.
+
+
+
+

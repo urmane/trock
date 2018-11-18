@@ -1,0 +1,5 @@
+Release Notes
+Additions per release (not bug fixes, that's in BUGS)
+
+0.0.1
+Changed init.lua to its version 0.0.1 and require te4 engine 1.3.3

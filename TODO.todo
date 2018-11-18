@@ -1,0 +1,189 @@
+Sprints (current work, remember to mark done in Projects below):
+  ☐ Facing indicator
+  ☐ NPC suspicion indicator
+
+GUI:
+ ☐ Facing indicator
+ ☐ NPC suspicion indicator
+ ☐ Visual indicator of how much light player is in: circular/oval like xbox Thief
+ ☐ Visual indicator of how much noise I'm making
+ ☐ Visual indicator of how "stealth"ed/visible I am
+ ☐ Visual indicator of "smell trail" ... but when/how to see this ...
+ ☐ particles for fog, snow, dust
+ ☐ footprints (as mos_* grids a la TOME)
+ Lockpick GUI:
+    ☐ popup window
+    ☐ background image
+    ☐ determine how it will work: no analog ability or forcefeedback
+    ☐ locktypes: ward/level/wafer/pin/rotary/tubular/disc/magnet/magic
+    ☐ lock attributes and states - mfctr and series, difficulty, level, #mechanisms
+    ☐ lock features: sprint, reset, trap
+    ☐ randomly-initialized mfctr => locktype, series => difficulty + certain features
+    ☐ tools align to locktypes (perhaps multiple): picks for pins
+    ☐ actions - what can be done, with what tools
+    ☐ successful pick => known info displays foreverafter
+    ☐ each action takes a turn, one action per mechanism (cannot see screen)
+
+Storyline/Quests:
+  Mainline:
+   ☐ Escape prison/sewer/graveyard
+   ☐ X selects you as secret anti-champion for this world
+   Murmon, Earth element:
+      ☐ collect gravity lens plot item
+      ☐ collect Speed tree, vs Earth anti-element
+   Tomb:
+      ☐ allows immediate access to volcano
+      ☐ completing tomb not necessary here, very dangerous
+      ☐ completing tomb allows access to Gora Graveyard 2 specials (vs Undead)
+   Volcano, Fire element:
+      ☐ collect Molten Heart plot item
+      ☐ Gain Shadow tree, vs-fire anti-element
+      ☐ Gain access to rest of world
+      ☐ Underworld access, but currently blocked
+   May need to force a confrontation here, to implement The Abyss
+   Castle Kurtok "rooftop", Air element zone:
+      ☐ collect Cloud X
+      ☐ Gain Control tree, vs-Air anti-element
+   Gora sewers, water element zone:
+      ☐ collect / drink Primordial Soup
+      ☐ Gain Death tree, vs-Water anti-element
+      ☐ Gain world mirror image, free travel
+      ☐ Gain ability to visit (at least part of) the Underworld (specials vsFear)
+   Defeat the Minions:
+     Undead Lieutenant:
+        ☐ Gora Graveyard 3
+        ☐ several tombs, several std kill methods (destroy body, sunlight, ...)
+        ☐ collect his X
+     Fear Lieutenant:
+        ☐ map corner island town
+        ☐ all unique monsters of various powers
+        ☐ collect his X
+     Greed Lieutenant:
+        ☐ Greed Town, either bribe gate guards (stupid expensive) or sneak in
+        ☐ lots of money, treasure - not really useful at this point in the game
+        ☐ open fences, bribing, wierd hyperbolic valuables and equipment available
+        ☐ collect his X
+      Force Lieutenant:
+        ☐ underwater city
+        ☐ warriors with strong armor/weapons
+        ☐ std military oriented
+        ☐ collect his X
+        ☐ Become God of Thieves with all four X
+   Defeat the Baron:
+      ☐ Baron escapes into Castle Kurtok
+      ☐ Chase him through random zones
+      ☐ maybe across the world
+  Optional:
+   ☐ Famous locations / bosses to do tasks at
+   ☐ Steal an X
+   ☐ Do the thing
+  Other:
+   ☐ The Baron's prison guards chasing party to provide time pressure?  Appear after X turns and search town
+   ☐ Reputation modifies quests/offers?  Low priority
+
+Worldmap:
+ ☐ install / use "tiled"
+ ☐ Ability to get/use a boat to travel over ocean tiles
+
+Zones:
+  Locations:
+    Gora:
+     ☐ key door to castle kurtok
+     ☐ gold bricks gfx
+     ☐ treasury: guarded by elite guards
+     ☐ armory
+    ☐ church
+    ☐ graveyard
+    ☐ zombies (town)
+    ☐ asylum
+    ☐ prison
+    ☐ poor/greedy towns
+    ☐ castle
+    ☐ mansion(s)
+    ☐ diseased body burning center
+    ☐ person collection facility
+    ☐ tesseract
+    ☐ mirror-image ocean/land via waterbreathing
+  Features:
+   ☐ Keys for doors - certainly key tied to specific door, no generics (use lockpicks)
+   ☐ Variable lighting per grid
+   ☐ tie variable lighting to visual indicator
+
+Sound:
+ ☐ done - understand playSoundNear - appears to be for playing sounds at !player-location
+ ☐ ability to list a list of sounds, chosen randomly on <action>
+ ☐ guards: random "Hum", "Hah", sigh, whistle
+ ☐ guards: on_aware "Hey!", "You!", "Stop!", "Freeze!"
+ ☐ zombie: random "rrr"  "Rrrrr", etc
+ ☐ zombie: on_aware "RRR!"
+ ☐ torch,brazier: random, sparks?
+ ☐ Lich scream :-)
+
+NPC/AI:
+ ✔ AI psuedo-patrol - turn on bump @done (17-01-29 11:50)
+ ✔ ability to change speed by AI state @done (17-01-29 11:51)
+ ☐ asymetric vision according to facing (if any)
+ ☐ AI patrol: list of: move to x,y; wait x, turn z
+ ☐ suspicion flag, set levels and timers
+ ☐ npc tooltip shows levels as "suspicious", et al.
+ ☐ AI respects suspicion flag
+ ☐ Noticing abnormals: bodies, broken windows, et al. raises suspicion
+ ☐ Hearing: Sound plays on Player:move (same precomp'd dist array as vis?), if n > e.hearing_sensitivity then e.ai_suspicion++ (and sound plays there, too)
+ ☐ Smell: some NPCs can use this to track while suspicious+
+
+Talents:
+ ☐ real Stealth (whatever that means)
+ Default Trees:
+   ☐ Awareness:Vision:activated
+   ☐ Awareness:Listen:activated
+   ☐ Awareness:Environment:activated (thruwalls)
+   ☐ Awareness:See Around Corners:activated (better cornerFOV)
+   ☐ Mechanic:Pick Locks:activated
+   ☐ Mechanic:Disarm Trap:activated
+   ☐ Mechanic:Disable Mechanism:activated
+   ☐ Mechanic:Set Trap:activated
+   ☐ Stealth:Hide:activated - done
+   ☐ Stealth:Move Silent:sustained
+   ☐ Stealth:Leap To Shadows:activated
+   ☐ Thief:Pick Pockets:activated
+   ☐ Thief:Sap:activated
+   ☐ Thief:Backstab:activated
+   ☐ Politics:Flattery:activated
+   ☐ Politics:Bribe:activated
+   ☐ Politics:Disguise:sustained
+ Anti-Elemental Trees:
+   ☐ Speed:Avoid Trap:sustained
+   ☐ Speed:Shadowjump:activated
+   ☐ Shadow:Hide In Plain Sight:sustained
+   ☐ Shadow:Create Shadow:activated
+   ☐ Control:Phantom Noise:activated
+   ☐ Control:Illusory Movement:activated
+   ☐ Control:Summon Shadows:activated
+   ☐ Control:Anti-Door:sustained?
+   ☐ Death:Nerve Strike:activated
+   ☐ Death:Assassinate:activated
+
+Stats - You are what you do:
+ ☐ Reputation
+ ☐ GoldEarnedFromSellingTreasure, added from Fence (not GoldInCurrentPossession)
+ ☐ Stats tied to each talent (tree), value++ on usage
+ ☐ XP == sum(stats, reputation, goldEarned, others) - no XP directly for killing
+ ☐ STR - carry loot, attack
+ ☐ DEX - lockpick, pickpock
+ ☐ maybe no stats?
+
+Shops/Fence:
+  Fence: Sell treasures for gold, hidden locations
+
+Items:
+ ☐ bodies - "unconscious guard"
+ ☐ specialty arrows: water for lights, moss arrow, etc.  needs ranged, bow, etc.
+  Treasures:
+    ☐ Gems
+    ☐ paintings
+    ☐ jewelry
+    ☐ sculptures (heavy!)
+    ☐ 
+
+Optionals to consider:
+ ☐ climb walls
